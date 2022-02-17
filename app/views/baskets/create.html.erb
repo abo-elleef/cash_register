@@ -36,7 +36,7 @@
       </p>
         
     </div>
-    <% @basket.baskets_products.sort_by(&:id).map do |basket_product| %>
+    <% @basket.baskets_products.includes(:product).sort_by(&:id).map do |basket_product| %>
       <div class=" grid grid-cols-3 mb-5">
         <div class="text-left">
           <%= basket_product.product.try :name %>
@@ -52,18 +52,6 @@
           <%= basket_product.price %> €
         </div>
       </div>
-
-    <% end %>
-      
-    <% if @suggests.present? %>
-      <hr>
-      <div>
-        <% @suggests.each do |suggest| %>
-          <div>
-            <%= suggest %>
-          </div>
-        <% end %>
-      </div>  
     <% end %>
   </div>
 </div>

@@ -1,0 +1,35 @@
+gr_1: 
+  product: green_tea
+  items_count: 1
+
+gr_2: 
+  product: green_tea
+  items_count: 2
+
+gr_3: 
+  product: green_tea
+  items_count: 3
+
+cf_1:
+  product: coffee
+  items_count: 1
+
+cf_2:
+  product: coffee
+  items_count: 2
+
+cf_3:
+  product: coffee
+  items_count: 3
+
+sr_1:
+  product: strawberries
+  items_count: 1
+
+sr_2:
+  product: strawberries
+  items_count: 2
+
+sr_3:
+  product: strawberries
+  items_count: 3

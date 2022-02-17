@@ -1,13 +1,14 @@
+
 class EvaluateBasket
+  
   def initialize(basket)
     @basket = basket
   end
 
   def perform
-    @basket.baskets_products.map do |basket_product|
+    @basket.baskets_products.includes(:product).map do |basket_product|
       evaluet_price(basket_product)
     end
-    # FIXME: have better suggests for bigger customer basket
   end
 
   private
@@ -35,7 +36,7 @@ class EvaluateBasket
   end
 
   def apply_percentage(product, amount)
-    product.price * amount * (product.discount_percentage / 100.0)
+    product.price * amount * (product.discount_percentage / 1000000.0)
   end
 
   def apply_fixed(product, amount)
@@ -49,6 +50,4 @@ class EvaluateBasket
       product.price / 2.0 * (amount - 1) + product.price
     end
   end
-
-  
 end
