@@ -1,0 +1,70 @@
+
+
+<div class="grid grid-cols-2 divide-x divide-gray-500">
+  <div class="text-center px-4 ">
+    <p class="underline decoration-solid mb-5 text-lg leading-6 text-sky-500 font-semibold tracking-normal"> Pick what will make your day :)  </p>
+    <table class="border-collapse border border-slate-400 table-auto w-full">
+      <thead>
+        <tr>
+          <th class="p-2 border border-slate-300">Code</th>
+          <th class="p-2 border border-slate-300">Name</th>
+          <th class="p-2 border border-slate-300">Price</th>
+          <th class="p-2 border border-slate-300">...</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td class="p-2 border border-slate-300"> <%= product.code  %> </td>
+            <td class="p-2 border border-slate-300"> <%= product.name  %> </td>
+            <td class="p-2 border border-slate-300"> <%= product.price %> € </td>
+            <td class="p-2 border border-slate-300"> 
+              <%= button_to 'Add', baskets_products_url(basket_id: @basket.id, product_id: product.id), method: :post, class: "underline text-blue-600 hover:text-blue-800 visited:text-purple-600" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div id="basket_container" class="px-4">
+    <div class="flex flex-row mb-5 ">
+      <p class="basis-3/4 text-lg leading-6 font-semibold tracking-normal">
+        You will be happy today for:
+      </p>
+      <p class="basis-1/4 text-md text-right leading-6 font-semibold tracking-normal text-sky-500">
+        <%= @basket.total %> €
+      </p>
+        
+    </div>
+    <% @basket.baskets_products.sort_by(&:id).map do |basket_product| %>
+      <div class=" grid grid-cols-3 mb-5">
+        <div class="text-left">
+          <%= basket_product.product.try :name %>
+        </div>
+        <div class="flex flex-row justify-center align-middle">
+            <%= button_to '-', baskets_product_url(id: basket_product.id), method: :delete, class: 'bg-rose-300 hover:bg-rose-500 text-white font-bold p-2 rounded' %>
+            <span class="px-4 align-middle">
+              <%= basket_product.items_count %>
+            </span>
+            <%= button_to '+', baskets_products_url(basket_id: basket_product.basket_id, product_id: basket_product.product_id), method: :post, class: 'bg-sky-300 hover:bg-sky-500 text-white font-bold p-2 rounded' %>
+        </div>
+        <div class="text-right">
+          <%= basket_product.price %> €
+        </div>
+      </div>
+
+    <% end %>
+      
+    <% if @suggests.present? %>
+      <hr>
+      <div>
+        <% @suggests.each do |suggest| %>
+          <div>
+            <%= suggest %>
+          </div>
+        <% end %>
+      </div>  
+    <% end %>
+  </div>
+</div>
+
