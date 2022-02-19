@@ -49,7 +49,10 @@
             <%= button_to '+', baskets_products_url(basket_id: basket_product.basket_id, product_id: basket_product.product_id), method: :post, class: 'bg-sky-300 hover:bg-sky-500 text-white font-bold p-2 rounded' %>
         </div>
         <div class="text-right">
-          <%= basket_product.price %> €
+          <% unless basket_product.original_price ==  basket_product.price %>
+            <p style="text-decoration: line-through;"> <%= basket_product.original_price %> € </p>
+          <% end %>
+          <p><%= basket_product.price %> €  </p>
         </div>
       </div>
     <% end %>

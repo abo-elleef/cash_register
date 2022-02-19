@@ -25,3 +25,6 @@ hosted on heroku: https://amenitiz-cash.herokuapp.com/
 
 * rails test (`rails test`)
 
+## Run Local Service
+
+* `./bin/dev`

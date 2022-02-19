@@ -19,16 +19,12 @@ class EvaluateBasket
   end
 
   def calculate_price(basket_product)  
-    apply_discount?(basket_product) ? discounted_price(basket_product) : original_price(basket_product) 
+    apply_discount?(basket_product) ? discounted_price(basket_product) : basket_product.original_price
   end
 
   def apply_discount?(basket_product)
     basket_product.product.discount_limit.present? &&
     basket_product.items_count >= basket_product.product.discount_limit
-  end
-
-  def original_price(basket_product)
-    basket_product.items_count * basket_product.product.price 
   end
   
   def discounted_price(basket_product)
