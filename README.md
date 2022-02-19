@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## requirements 
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+* ruby 2.7.3 
+* rails 7.0.2
 
-* Database creation
 
-* Database initialization
+## Live Preview 
 
-* How to run the test suite
+hosted on heroku: https://amenitiz-cash.herokuapp.com/
 
-* Services (job queues, cache servers, search engines, etc.)
+## Local Install
 
-* Deployment instructions
+* close repo (`git clone https://github.com/abo-elleef/cash_register.git`)
+* go into directory(`cd cash_register`)
+* create database (`rake db:create`)
+* migrate database (`rake db:migrate`)
+* populate database (`rake db:seed`)
 
-* ...
+## Run Tests
+
+* rails test (`rails test`)
+
